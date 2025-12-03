@@ -220,7 +220,7 @@ npm run lint
 
 ## License
 
-This project is proprietary and maintained by the Maya-IO team.
+This project is proprietary and maintained by the author Victor
 
 ## Support
 
