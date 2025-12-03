@@ -8,25 +8,27 @@ import {
   Settings,
   ChevronDown,
 } from "lucide-react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../store";
+import { setView } from "../store/navSlice";
 
 export function Sidebar() {
-  const menuItems = [
-    { icon: Home, label: "Dashboard", active: false },
-    { icon: Repeat, label: "Exchange", active: false },
-    { icon: DollarSign, label: "MoneyX", active: true },
-    { icon: Users, label: "P2P Trading", active: false },
-    {
-      icon: ArrowLeftRight,
-      label: "Swap Crypto",
-      active: false,
-    },
-    {
-      icon: Key,
-      label: "Account",
-      active: false,
-      hasDropdown: true,
-    },
-    { icon: Settings, label: "Settings", active: false },
+  const dispatch = useDispatch();
+  const currentView = useSelector((s: RootState) => s.nav.currentView);
+
+  const menuItems: Array<{
+    icon: any;
+    label: string;
+    hasDropdown?: boolean;
+  }> = [
+    { icon: Home, label: "Dashboard" },
+    { icon: Repeat, label: "Exchange" },
+    { icon: DollarSign, label: "MoneyX" },
+    { icon: Users, label: "P2P Trading" },
+    { icon: ArrowLeftRight, label: "Swap Crypto" },
+    { icon: Key, label: "Account", hasDropdown: true },
+    { icon: Settings, label: "Settings" },
   ];
 
   return (
@@ -34,11 +36,13 @@ export function Sidebar() {
       <nav className="space-y-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
+          const active = currentView === item.label;
           return (
             <div
               key={item.label}
+              onClick={() => dispatch(setView(item.label as any))}
               className={`flex cursor-pointer items-center gap-3 rounded-lg px-4 py-3 transition-colors ${
-                item.active
+                active
                   ? "bg-gray-800 text-white"
                   : "text-gray-400 hover:bg-gray-800/50 hover:text-white"
               }`}

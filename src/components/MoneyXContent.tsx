@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState } from "react";
-
-const SalaamLogo = require("../Assets/Salaam.png");
-
-const PremierLogo = require("../Assets/Premierbank.png");
+import SalaamLogo from "../Assets/Salaam.png";
+import PremierLogo from "../Assets/Premierbank.png";
 import { ArrowDownUp, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -23,7 +20,7 @@ export function MoneyXContent() {
   const [receiveBank, setReceiveBank] = useState("premier");
 
   return (
-    <div className="m-[5px] max-w-3xl mx-[5px] my-[-25px]">
+    <div className="mx-auto max-w-3xl p-6">
       <h1 className="mb-[5px] text-3xl text-white font-[Alatsi] text-[19px] text-left p-[-1px] px-[6px] py-[0px] mt-[0px] mr-[0px] ml-[0px] font-bold font-normal">
         MoneyX
       </h1>
@@ -183,9 +180,9 @@ export function MoneyXContent() {
         </div>
 
         {/* Submit Button */}
-        <Button className="h-13 w-auto rounded-[28px] bg-emerald-600 text-white hover:bg-emerald-700 px-[350px] py-[-25 px] font-[Alexandria] text-[13px] not-italic py-[-100px] mx-[5px] my-[-25px] py-[-200px]">
+        <Button className="w-full rounded-[28px] bg-emerald-600 text-white hover:bg-emerald-700 py-3 font-[Alexandria] text-[13px]">
           Submit
-          </Button>
+        </Button>
       </div>
     </div>
   );
